@@ -3,13 +3,14 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def ScatterPlot(x_array, y_array, title='Linear Regression',
-                x='Independent Variable', y='Dependent Variable',
+def ScatterPlot(x_array, y_array, title='Scatter Plot',
+                x='Independent Variable', 
+                y='Dependent Variable',
                 save=False):
     plt.title(title)
     plt.xlabel(x)
     plt.ylabel(y)
-    scatterPlot = plt.scatter(x_array, y_array, c='blue', marker='H')
+    plt.scatter(x_array, y_array, c='blue', marker='H')
     if save == False:
         plt.show()
     elif save == True:
@@ -26,15 +27,10 @@ def loadTXT(file, x_col=0, y_col=1):
     """
     # Load .txt data using np methods
     results = np.loadtxt(file, comments='#', delimiter='\t')
-    # Number of Columns
-    cols = results[0].size
-    # Number of Rows
-    rows = len(results)
-    
-    # Create an array as many as the number of columns
-    x = np.array( results[:, x_col], dtype=float ) # Independent Variables (Column 0)
-    y = np.array( results[:, y_col], dtype=float ) # Dependent Variables (Column 1)
-    
+    # Independent Variables (Column 0)
+    x = np.array( results[:, x_col], dtype=float ) 
+    # Dependent Variables (Column 1)
+    y = np.array( results[:, y_col], dtype=float ) 
     return x, y
 
 def loadCSV(file, x_col=0, y_col=1):
@@ -53,8 +49,8 @@ def loadCSV(file, x_col=0, y_col=1):
             x[i] = result[i][x_col]
             y[i] = result[i][y_col]
 
-    x = x[1:]
-    y = y[1:]
+    x = x[1:] # Decimate the very first unused element
+    y = y[1:] # Decomate the very first unused element
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
@@ -86,12 +82,9 @@ def loadDAT(file, x_col=0, y_col=1):
     """
     
 if __name__ == '__main__':
-    name_txt = 'snake.txt'
-    name_csv = 'snake.csv'
-    name_dat = 'snake.dat'
-    """
-    x_load, y_load = loadTXT(name_txt);
-    x_load, y_load = loadCSV(name_csv)
-    ScatterPlot(x_load, y_load)
-    """
-    loadDAT(name_dat)
+    name_txt = '../data/snow.txt'
+    name_csv = '../data/snow.csv'
+    name_dat = '../data/snow.dat'
+    # x_load, y_load = loadTXT(name_txt)
+    # x_load, y_load = loadCSV(name_csv)
+    # ScatterPlot(x_load, y_load)
