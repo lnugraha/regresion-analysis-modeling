@@ -1,6 +1,5 @@
 import numpy as np
 import csv
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def ScatterPlot(x_array, y_array, title='Scatter Plot',
@@ -34,7 +33,7 @@ def loadTXT(file, x_col=0, y_col=1):
     return x, y
 
 def loadCSV(file, x_col=0, y_col=1):
-    # Using csv
+    # Using csv, delimiter is a comma sign (,)
     reader = csv.reader( open(file, 'r'), delimiter=',' )
     result = list(reader)
 
@@ -45,46 +44,41 @@ def loadCSV(file, x_col=0, y_col=1):
     y = np.ndarray(rows, np.float64)
 
     for i in range(rows):
-        if (i != 0):
+        if (i != 0): # Skip the header part
             x[i] = result[i][x_col]
             y[i] = result[i][y_col]
 
     x = x[1:] # Decimate the very first unused element
-    y = y[1:] # Decomate the very first unused element
+    y = y[1:] # Decimate the very first unused element
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
-    # Using with open style
-    # with open(file, 'r') as results:
-    #    data = results.read()
-    # print(data)
-    # print(len(data))
-
+    # Using with open built-in command
     results = open(file, 'r')
-    test = results.readline()
-    print(test)
-    """
-    results.close()
+    x_list = list()
+    y_list = list()
+    for line in results:
+        fields = line.split('\t')
+        x_list.append( fields[0] )
+        y_list.append( fields[1] )
 
-    header = 1
-    rows = len(test) - header 
+    x = np.zeros( len(x_list)-1 )
+    y = np.zeros( len(x_list)-1 )
 
-    x = np.ndarray(rows, np.float64)
-    y = np.ndarray(rows, np.float64)
+    X = x_list[1:]
+    Y = y_list[1:]
 
-    # TODO
-    x_list = []; y_list = []
-    for i in range(rows):
-        if (i != 0):
-            x_list.append(0)
-            
-    return test
-    """
+    for i in range( len(X) ):
+        x[i] = float( X[i] )
+        y[i] = float( Y[i] )
     
+    return x, y
+
 if __name__ == '__main__':
     name_txt = '../data/snow.txt'
     name_csv = '../data/snow.csv'
     name_dat = '../data/snow.dat'
     # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(name_csv)
-    # ScatterPlot(x_load, y_load)
+    x_load, y_load = loadDAT(name_dat)
+    ScatterPlot(x_load, y_load)
