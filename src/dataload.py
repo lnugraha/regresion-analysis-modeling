@@ -1,18 +1,22 @@
 import numpy as np
 import math, csv
+
 import matplotlib.pyplot as plt
+import seaborn as sns
+
 from abc import ABC, abstractmethod
 
 def onlyNumber(dataIN):
     """
-    Perfom data check; reject all non-numbers or non-real numbers
+    Perfom data check; reject all complex or non-numbers (boolean or strings)
     Raise Type Error : if dataIN is not a number
     Raise Value Error: if dataIN is not a real number
     """
     if type(dataIN) not in [int, float, np.float64, np.float32, 
         np.int8, np.int16, np.int32, np.int64,
         np.uint8, np.uint16, np.uint32, np.uint64]:
-        raise TypeError("Input data must be REAL numbers; data type: {}".format(type(dataIN)))
+        raise TypeError("Input data must be REAL numbers; data type is {}"
+            .format(type(dataIN)))
     elif type(dataIN) in [complex, np.complex64, np.complex128]:
         raise ValueError("Input data cannot be COMPLEX numbers")
     else:
@@ -42,6 +46,13 @@ def ScatterPlot(x_array, y_array, title='Scatter Plot',
     elif save == True:
         plt.savefig('{}.png'.format(title))
 
+def SurfacePlot(x_array, y_array, function_model,
+                x='Independent Variable 1', y='Independent Variable 2',
+                z='Dependent Variable', 
+                save=False):
+    # TODO: Coming soon
+    pass
+
 def loadTXT(file, x_col=0, y_col=1):
     """
     Load a text file and returned as both independent and dependent arrays
@@ -59,9 +70,8 @@ def loadTXT(file, x_col=0, y_col=1):
     y = np.array( results[:, y_col], dtype=float ) 
     # Assertion
     for i in range( len(x) ):
-        onlyNumber( x[i] )
-        onlyNumber( y[i] )
-
+        onlyNumber( x[i] ); onlyNumber( y[i] )
+    
     return x, y
 
 def loadCSV(file, x_col=0, y_col=1):
@@ -128,6 +138,8 @@ class loadTXT_DIM(LoadDIM):
         x = np.array( results[:,col0] )
         y = np.array( results[:,col1] )
         z = np.array( results[:,col2] )
+        for i in range (len(x)):
+            onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
         return x, y, z
 
 class loadCSV_DIM(LoadDIM):
@@ -149,6 +161,8 @@ class loadCSV_DIM(LoadDIM):
                 z[i] = result[i][col2]
 
         x = x[1:]; y = y[1:]; z = z[1:] 
+        for i in range (len(x)):
+            onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
         return x, y, z
 
 if __name__ == '__main__':
@@ -160,15 +174,19 @@ if __name__ == '__main__':
     wblake = '../data/triplet/wblake.txt'
     triplets = '../data/triplet/svmsample.csv'
 
-    x_load, y_load = loadTXT(name_txt)
+    # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
     
     # multidim_data = loadCSV_DIM(triplets)
     # x_load, y_load, z_load = multidim_data.extractDIM()
     
-    # multidim_data = loadTXT_DIM(wblake)
+    multidim_data = loadTXT_DIM(wblake)
+    x_load, y_load, z_load = multidim_data.extractDIM()
+    
+    # perceptron = '../data/triplet/perceptron.csv'
+    # multidim_data = loadCSV_DIM(perceptron)
     # x_load, y_load, z_load = multidim_data.extractDIM()
 
-    # ScatterPlot(y_load, z_load)
-    ScatterPlot(x_load, y_load)
+    ScatterPlot(y_load, z_load)
+    # ScatterPlot(x_load, y_load)
