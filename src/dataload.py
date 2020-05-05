@@ -1,13 +1,22 @@
 import numpy as np
-import csv
+import math, csv
 import matplotlib.pyplot as plt
 from abc import ABC, abstractmethod
 
 def onlyNumber(dataIN):
-    # Perfom data check; reject all non-numbers or non-real numbers
-    # Raise Type Error : if dataIN is not a number
-    # Raise Value Error: if dataIN is not a real number
-    pass
+    """
+    Perfom data check; reject all non-numbers or non-real numbers
+    Raise Type Error : if dataIN is not a number
+    Raise Value Error: if dataIN is not a real number
+    """
+    if type(dataIN) not in [int, float, np.float64, np.float32, 
+        np.int8, np.int16, np.int32, np.int64,
+        np.uint8, np.uint16, np.uint32, np.uint64]:
+        raise TypeError("Input data must be REAL numbers; data type: {}".format(type(dataIN)))
+    elif type(dataIN) in [complex, np.complex64, np.complex128]:
+        raise ValueError("Input data cannot be COMPLEX numbers")
+    else:
+        pass
 
 def ColoredScatterPlot(x_array, y_array, z_array,
                        title='Colored Scatter Plot',
@@ -48,6 +57,11 @@ def loadTXT(file, x_col=0, y_col=1):
     x = np.array( results[:, x_col], dtype=float ) 
     # Dependent Variables (Column 1)
     y = np.array( results[:, y_col], dtype=float ) 
+    # Assertion
+    for i in range( len(x) ):
+        onlyNumber( x[i] )
+        onlyNumber( y[i] )
+
     return x, y
 
 def loadCSV(file, x_col=0, y_col=1):
@@ -68,31 +82,36 @@ def loadCSV(file, x_col=0, y_col=1):
 
     x = x[1:] # Decimate the very first unused element
     y = y[1:] # Decimate the very first unused element
+    # Assertion
+    for i in range ( len(x) ):
+        onlyNumber( x[i] ); onlyNumber( y[i] )
+
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
     # Using with open built-in command
     results = open(file, 'r')
-    x_list = list()
-    y_list = list()
+    x_list = list(); y_list = list()
     for line in results:
         fields = line.split('\t')
         x_list.append( fields[0] )
         y_list.append( fields[1] )
 
-    x = np.zeros( len(x_list)-1 )
-    y = np.zeros( len(x_list)-1 )
-
-    X = x_list[1:]
-    Y = y_list[1:]
+    x = np.zeros( len(x_list)-1 ); y = np.zeros( len(x_list)-1 )
+    X = x_list[1:]; Y = y_list[1:]
 
     for i in range( len(X) ):
-        x[i] = float( X[i] )
-        y[i] = float( Y[i] )
+        x[i] = float( X[i] ); y[i] = float( Y[i] )
+        onlyNumber(x[i]); onlyNumber(y[i])
     
     return x, y
 
 class LoadDIM(ABC):
+    """
+    Load a data file and return THREE different arrays simultaneously
+    Capable of handling multidimensional data (three dimensional)
+    Only handle .csv and .txt data extension
+    """
     def __init__(self, filein):
         self.filein = filein
 
@@ -102,7 +121,6 @@ class LoadDIM(ABC):
 
 class loadTXT_DIM(LoadDIM):
     def __init__(self, filein):
-        # Check if the file extension is .txt or .csv
         self.filein = filein
     
     def extractDIM(self, col0=0, col1=1, col2=2):
@@ -130,9 +148,7 @@ class loadCSV_DIM(LoadDIM):
                 y[i] = result[i][col1]
                 z[i] = result[i][col2]
 
-        x = x[1:] # Decimate the very first unused element
-        y = y[1:] # Decimate the very first unused element
-        z = z[1:] # Decimate the very first unused element
+        x = x[1:]; y = y[1:]; z = z[1:] 
         return x, y, z
 
 if __name__ == '__main__':
@@ -140,19 +156,19 @@ if __name__ == '__main__':
     name_csv = '../data/snow/snow.csv'
     name_dat = '../data/snow/snow.dat'
 
-    # duration_csv = '../data/duration/duration.csv'
+    duration_csv = '../data/duration/duration.csv'
     wblake = '../data/triplet/wblake.txt'
-    # triplets = '../data/triplet/svmsample.csv'
+    triplets = '../data/triplet/svmsample.csv'
 
-    # x_load, y_load = loadTXT(name_txt)
+    x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
     
     # multidim_data = loadCSV_DIM(triplets)
     # x_load, y_load, z_load = multidim_data.extractDIM()
     
-    multidim_data = loadTXT_DIM(wblake)
-    x_load, y_load, z_load = multidim_data.extractDIM()
+    # multidim_data = loadTXT_DIM(wblake)
+    # x_load, y_load, z_load = multidim_data.extractDIM()
 
-    ScatterPlot(y_load, z_load)
-    # ScatterPlot(x_load, y_load)
+    # ScatterPlot(y_load, z_load)
+    ScatterPlot(x_load, y_load)
