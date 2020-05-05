@@ -1,10 +1,13 @@
 import numpy as np
-import math, csv
+import math, csv, sys, os
 
 import matplotlib.pyplot as plt
-import seaborn as sns
+# import seaborn as sns
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
 
 from abc import ABC, abstractmethod
+from collections import Counter
 
 def onlyNumber(dataIN):
     """
@@ -32,6 +35,12 @@ def ColoredScatterPlot(x_array, y_array, z_array,
     # provided
     # z_array provide an extra dimensionality through color; hence the value 
     # MUST be discrete
+    
+    unique = Counter( z_array ).keys()
+    if (unique != 2):
+        print("Only binary classification is supported at the moment")
+        sys.exit
+    # Classify based on unique keys 
 
 def ScatterPlot(x_array, y_array, title='Scatter Plot',
                 x='Independent Variable', 
@@ -46,12 +55,23 @@ def ScatterPlot(x_array, y_array, title='Scatter Plot',
     elif save == True:
         plt.savefig('{}.png'.format(title))
 
+
 def SurfacePlot(x_array, y_array, function_model,
                 x='Independent Variable 1', y='Independent Variable 2',
                 z='Dependent Variable', 
                 save=False):
     # TODO: Coming soon
-    pass
+    # z_array = function_model(x_array, z_array)
+    # x_array = np.arange(-5, 5, 0.25)
+    # y_array = np.arange(-5, 5, 0.25)
+    x_array, y_array = np.meshgrid(x_array, y_array)
+    z_array = np.sin( np.sqrt(x_array**2 + y_array**2) )
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(x_array, y_array, z_array, cmap=cm.coolwarm,
+        linewidth=0, antialiased=False)
+    plt.show()
+
 
 def loadTXT(file, x_col=0, y_col=1):
     """
@@ -165,6 +185,11 @@ class loadCSV_DIM(LoadDIM):
             onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
         return x, y, z
 
+def function_model(x_array, y_array):
+    pass
+    # Complete arbitrary function model here
+
+
 if __name__ == '__main__':
     name_txt = '../data/snow/snow.txt'
     name_csv = '../data/snow/snow.csv'
@@ -188,5 +213,10 @@ if __name__ == '__main__':
     # multidim_data = loadCSV_DIM(perceptron)
     # x_load, y_load, z_load = multidim_data.extractDIM()
 
-    ScatterPlot(y_load, z_load)
+    # ScatterPlot(y_load, z_load)
     # ScatterPlot(x_load, y_load)
+
+    x_array = np.arange(-5, 5, 0.1)
+    y_array = np.arange(-5, 5, 0.1)
+    z_array = np.zeros( len(x_array) )
+    SurfacePlot(x_array, y_array, function_model)
