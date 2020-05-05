@@ -1,6 +1,24 @@
 import numpy as np
 import csv
 import matplotlib.pyplot as plt
+from abc import ABC, abstractmethod
+
+def onlyNumber(dataIN):
+    # Perfom data check; reject all non-numbers or non-real numbers
+    # Raise Type Error : if dataIN is not a number
+    # Raise Value Error: if dataIN is not a real number
+    pass
+
+def ColoredScatterPlot(x_array, y_array, z_array,
+                       title='Colored Scatter Plot',
+                       x='Independent Variable', y='Dependent Variable',
+                       save=False):
+    pass
+    # Coming Soon
+    # TODO: Check the length of z_array then decide how many colors will be 
+    # provided
+    # z_array provide an extra dimensionality through color; hence the value 
+    # MUST be discrete
 
 def ScatterPlot(x_array, y_array, title='Scatter Plot',
                 x='Independent Variable', 
@@ -74,11 +92,67 @@ def loadDAT(file, x_col=0, y_col=1):
     
     return x, y
 
+class LoadDIM(ABC):
+    def __init__(self, filein):
+        self.filein = filein
+
+    @abstractmethod
+    def extractDIM(self, filein, col0=0, col1=1, col2=2):
+        pass
+
+class loadTXT_DIM(LoadDIM):
+    def __init__(self, filein):
+        # Check if the file extension is .txt or .csv
+        self.filein = filein
+    
+    def extractDIM(self, col0=0, col1=1, col2=2):
+        results = np.loadtxt( self.filein, comments='#', delimiter='\t')
+        x = np.array( results[:,col0] )
+        y = np.array( results[:,col1] )
+        z = np.array( results[:,col2] )
+        return x, y, z
+
+class loadCSV_DIM(LoadDIM):
+    def __init__(self, filein):
+        self.filein = filein
+    
+    def extractDIM(self, col0=0, col1=1, col2=2):
+        # Using csv, delimiter is a comma sign (,)
+        reader = csv.reader( open(self.filein, 'r'), delimiter=',' )
+        result = list(reader)
+        rows = len(result) #including header
+
+        x = np.zeros(rows); y = np.zeros(rows);z = np.zeros(rows)
+
+        for i in range(rows):
+            if (i != 0): # Skip the header part
+                x[i] = result[i][col0]
+                y[i] = result[i][col1]
+                z[i] = result[i][col2]
+
+        x = x[1:] # Decimate the very first unused element
+        y = y[1:] # Decimate the very first unused element
+        z = z[1:] # Decimate the very first unused element
+        return x, y, z
+
 if __name__ == '__main__':
-    name_txt = '../data/snow.txt'
-    name_csv = '../data/snow.csv'
-    name_dat = '../data/snow.dat'
+    name_txt = '../data/snow/snow.txt'
+    name_csv = '../data/snow/snow.csv'
+    name_dat = '../data/snow/snow.dat'
+
+    # duration_csv = '../data/duration/duration.csv'
+    wblake = '../data/triplet/wblake.txt'
+    # triplets = '../data/triplet/svmsample.csv'
+
     # x_load, y_load = loadTXT(name_txt)
-    # x_load, y_load = loadCSV(name_csv)
-    x_load, y_load = loadDAT(name_dat)
-    ScatterPlot(x_load, y_load)
+    # x_load, y_load = loadCSV(duration_csv)
+    # x_load, y_load = loadDAT(name_dat)
+    
+    # multidim_data = loadCSV_DIM(triplets)
+    # x_load, y_load, z_load = multidim_data.extractDIM()
+    
+    multidim_data = loadTXT_DIM(wblake)
+    x_load, y_load, z_load = multidim_data.extractDIM()
+
+    ScatterPlot(y_load, z_load)
+    # ScatterPlot(x_load, y_load)
