@@ -24,3 +24,4 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 
 ## B-Spline ##
 
+## Parametric Regression ##

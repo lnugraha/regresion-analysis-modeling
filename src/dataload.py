@@ -46,32 +46,29 @@ def ScatterPlot(x_array, y_array, title='Scatter Plot',
                 x='Independent Variable', 
                 y='Dependent Variable',
                 save=False):
-    plt.title(title)
-    plt.xlabel(x)
-    plt.ylabel(y)
+    plt.title(title); plt.xlabel(x); plt.ylabel(y)
     plt.scatter(x_array, y_array, c='blue', marker='H')
     if save == False:
         plt.show()
     elif save == True:
         plt.savefig('{}.png'.format(title))
 
-
 def SurfacePlot(x_array, y_array, function_model,
+                title='Surface Plot',
                 x='Independent Variable 1', y='Independent Variable 2',
                 z='Dependent Variable', 
                 save=False):
-    # TODO: Coming soon
-    # z_array = function_model(x_array, z_array)
-    # x_array = np.arange(-5, 5, 0.25)
-    # y_array = np.arange(-5, 5, 0.25)
+    # TODO: Check Please
     x_array, y_array = np.meshgrid(x_array, y_array)
-    z_array = np.sin( np.sqrt(x_array**2 + y_array**2) )
+    z_array = function_model(x_array, y_array)
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     surf = ax.plot_surface(x_array, y_array, z_array, cmap=cm.coolwarm,
         linewidth=0, antialiased=False)
-    plt.show()
-
+    if save == False:
+        plt.show()
+    elif save == True:
+        plt.savefig('{}.png'.format(title))
 
 def loadTXT(file, x_col=0, y_col=1):
     """
@@ -186,10 +183,10 @@ class loadCSV_DIM(LoadDIM):
         return x, y, z
 
 def function_model(x_array, y_array):
-    pass
     # Complete arbitrary function model here
-
-
+    z_array = np.sin( np.sqrt(x_array**2 + y_array**2) )
+    return z_array
+    
 if __name__ == '__main__':
     name_txt = '../data/snow/snow.txt'
     name_csv = '../data/snow/snow.csv'
