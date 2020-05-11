@@ -10,18 +10,25 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [ ] Migrate data to TensorFlow or Torch models
 
 ## Linear Regression ##
-- [ ] Using statistics approach (R-square value)
+- [X] Using statistics approach (R-square value)
 - [ ] Using machine learning approach (RMSE value)
+- [ ] Using TensorFlow model
+- [ ] Using PyTorch model
 
 ## Step-Wise Regression ##
 
 ## Logistic Regression ##
 - [ ] (Binary or beyond) supervised clasification purpose
+- [ ] Using TensorFlow model
+- [ ] Using PyTorch model
 
 ## Support Vector Machine ##
 - [ ] Binary classification purpose
 - [ ] Determine the hyper-plane
+- [ ] Using Scikit-Learn hyper-parameter search
 
 ## B-Spline ##
+- To be determined
 
 ## Parametric Regression ##
+- To be determined
