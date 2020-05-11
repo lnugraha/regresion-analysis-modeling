@@ -3,21 +3,20 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # Hyper-parameters
 input_size = 1
 output_size = 1
-num_epochs = 60
+num_epochs = 100
 learning_rate = 0.001
 
 # Toy dataset
-x_train = np.array([[3.3], [4.4], [5.5], [6.71], [6.93], [4.168], 
-                    [9.779], [6.182], [7.59], [2.167], [7.042], 
-                    [10.791], [5.313], [7.997], [3.1]], dtype=np.float32)
+x_train = np.array([[23.1], [32.8], [31.8], [32.0], [30.4], [24.0], [39.5], 
+                    [24.2], [52.5], [37.9], [30.5], [25.1], [12.4], [35.1], 
+                    [31.5], [21.1], [27.6]], dtype=np.float32)
 
-y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573], 
-                    [3.366], [2.596], [2.53], [1.221], [2.827], 
-                    [3.465], [1.65], [2.904], [1.3]], dtype=np.float32)
+y_train = np.array([[10.5], [16.7], [18.2], [17.0], [16.3], [10.5], [23.1], 
+                    [12.4], [24.9], [22.8], [14.1], [12.9], [8.8], [17.4],
+                    [14.9], [10.5], [16.1]], dtype=np.float32)
 
 # Linear regression model
 model = nn.Linear(input_size, output_size)
@@ -48,8 +47,11 @@ for epoch in range(num_epochs):
 predicted = model(torch.from_numpy(x_train)).detach().numpy()
 plt.plot(x_train, y_train, 'ro', label='Original data')
 plt.plot(x_train, predicted, label='Fitted line')
-plt.legend()
+# plt.legend()
+plt.xlabel('Snow')
+plt.ylabel('Yield')
+plt.title('Plot of Snow vs Yield using Machine Learning')
 plt.show()
 
 # Save the model checkpoint
-torch.save(model.state_dict(), 'model.ckpt')
+# torch.save(model.state_dict(), 'model.ckpt')

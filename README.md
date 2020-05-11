@@ -21,14 +21,14 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [X] Using statistics approach (R-square value)
 - [ ] Using machine learning approach (RMSE value)
 - [ ] Using multi-parameter variables
-- [ ] Using TensorFlow and PyTorch
+- [X] Using TensorFlow and PyTorch
 
 <table> <tr>
 <th> Statistical Analysis </th> <th> Machine Learning </th>
 </tr>
 <tr>
 <td> <img src='./assets/rsquare.png'> </td>
-<td> <img src='./assets/rsquare.png'> </td>
+<td> <img src='./assets/linear_regression_torch.png'> </td>
 </tr> </table>
 
 ## Logistic Regression ##
