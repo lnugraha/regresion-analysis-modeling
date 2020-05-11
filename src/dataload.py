@@ -187,6 +187,19 @@ def function_model(x_array, y_array):
     z_array = np.sin( np.sqrt(x_array**2 + y_array**2) )
     return z_array
     
+def Himmelblau_Function(x_array, y_array):
+    # Himmelblau Function
+    z_array = (x_array**2 + y_array - 11)**2 + (x_array + y_array**2 - 7)**2
+    return z_array
+
+def CreateMeshData(minXY, maxXY, delta, function_model):
+    x = np.arange(minXY, maxXY, delta)
+    y = np.arange(minXY, maxXY, delta)
+    X, Y = np.meshgrid(x, y)
+    Z = [function_model(x,y) for (x,y) in zip(X,Y)]
+    
+    return (X, Y, Z)
+
 if __name__ == '__main__':
     name_txt = '../data/snow/snow.txt'
     name_csv = '../data/snow/snow.csv'
@@ -213,7 +226,16 @@ if __name__ == '__main__':
     # ScatterPlot(y_load, z_load)
     # ScatterPlot(x_load, y_load)
 
-    x_array = np.arange(-5, 5, 0.1)
-    y_array = np.arange(-5, 5, 0.1)
+    x_array = np.arange(-6, 6, 0.1)
+    y_array = np.arange(-6, 6, 0.1)
     z_array = np.zeros( len(x_array) )
-    SurfacePlot(x_array, y_array, function_model)
+    # SurfacePlot(x_array, y_array, Himmelblau_Function)
+    
+    (X,Y,Z) = CreateMeshData(-6, 6, 0.1, Himmelblau_Function)
+    
+    nContour = 50
+    plt.contour(X, Y, Z, nContour)
+    plt.title('Himmerblau Function on 2-D Surface')
+    plt.xlabel('X Axis')
+    plt.ylabel('Y Axis')
+    plt.show()
