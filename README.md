@@ -11,6 +11,9 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 
 <br/>
 <table> <tr>
+<th> Two-Dimensional Plot </th> <th> Three-Dimensional Plot </th>
+</tr>
+<tr>
 <td> <img src='./assets/himmelblau_2D.png'> </td>
 <td> <img src='./assets/himmelblau_3D.png'> </td>
 </tr> </table>

@@ -65,6 +65,9 @@ def SurfacePlot(x_array, y_array, function_model,
     ax = fig.gca(projection='3d')
     surf = ax.plot_surface(x_array, y_array, z_array, cmap=cm.coolwarm,
         linewidth=0, antialiased=False)
+    plt.xlabel('X Axis')
+    plt.ylabel('Y Axis')
+    plt.title('Himmelblau Function on 3-D Surface')
     if save == False:
         plt.show()
     elif save == True:
@@ -229,13 +232,14 @@ if __name__ == '__main__':
     x_array = np.arange(-6, 6, 0.1)
     y_array = np.arange(-6, 6, 0.1)
     z_array = np.zeros( len(x_array) )
-    # SurfacePlot(x_array, y_array, Himmelblau_Function)
+    SurfacePlot(x_array, y_array, Himmelblau_Function)
     
     (X,Y,Z) = CreateMeshData(-6, 6, 0.1, Himmelblau_Function)
-    
+    """
     nContour = 50
     plt.contour(X, Y, Z, nContour)
     plt.title('Himmerblau Function on 2-D Surface')
     plt.xlabel('X Axis')
     plt.ylabel('Y Axis')
     plt.show()
+    """
