@@ -25,6 +25,17 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [ ] Using multi-parameter variables
 - [ ] Using TensorFlow and PyTorch
 
+<br/>
+<table> <tr>
+<th> Statistical Analysis </th> <th> Machine Learning </th>
+</tr>
+<tr>
+<td> <img src='./assets/rsquare.png'> </td>
+<td> Coming Soon </td>
+</tr> </table>
+<br/>
+
+
 ## Logistic Regression ##
 - [ ] (Binary or beyond) supervised clasification purpose
 - [ ] Using TensorFlow and PyTorch model

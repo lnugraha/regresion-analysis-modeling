@@ -109,8 +109,11 @@ if __name__ == '__main__':
 
     print("Slope and Intercept: {} and {}".format(m_snow, b_snow) )
     print("{}".format(rsqr))
-    # plt.scatter(x_snow, y_snow, color='red')
-    # plt.plot(x_snow, regression_line, color='blue')
-    # plt.show()
+    plt.scatter(x_snow, y_snow, color='red')
+    plt.plot(x_snow, regression_line, color='blue')
+    plt.title('Plot of Snow vs Yield using Statistical Analysis')
+    plt.xlabel('Snow')
+    plt.ylabel('Yield')
+    plt.show()
 
 
