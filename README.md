@@ -16,7 +16,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> <img src='./assets/himmelblau_2D.png'> </td>
 <td> <img src='./assets/himmelblau_3D.png'> </td>
 </tr> </table>
-<br/>
 
 ## Linear Regression ##
 - [X] Using statistics approach (R-square value)
@@ -31,8 +30,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> <img src='./assets/rsquare.png'> </td>
 <td> <img src='./assets/rsquare.png'> </td>
 </tr> </table>
-<br/>
-
 
 ## Logistic Regression ##
 - [ ] (Binary or beyond) supervised clasification purpose
