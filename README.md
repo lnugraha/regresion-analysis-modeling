@@ -6,26 +6,33 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [X] Load Data in 2D or 3D forms
 - [X] Display data as a 2D plot
 - [ ] Display data as a 2D plot with colors
-- [ ] Display data as a 3D surface plot
+- [X] Display data as a 3D surface plot
 - [ ] Migrate data to TensorFlow or Torch models
+
+<br/>
+<table> <tr>
+<td> <img src='./assets/himmelblau_2D.png'> </td>
+<td> <img src='./assets/himmelblau_3D.png'> </td>
+</tr> </table>
+<br/>
 
 ## Linear Regression ##
 - [X] Using statistics approach (R-square value)
 - [ ] Using machine learning approach (RMSE value)
-- [ ] Using TensorFlow model
-- [ ] Using PyTorch model
-
-## Step-Wise Regression ##
+- [ ] Using multi-parameter variables
+- [ ] Using TensorFlow and PyTorch
 
 ## Logistic Regression ##
 - [ ] (Binary or beyond) supervised clasification purpose
-- [ ] Using TensorFlow model
-- [ ] Using PyTorch model
+- [ ] Using TensorFlow and PyTorch model
 
 ## Support Vector Machine ##
 - [ ] Binary classification purpose
 - [ ] Determine the hyper-plane
 - [ ] Using Scikit-Learn hyper-parameter search
+
+## Step-Wise Regression ##
+- To be determined
 
 ## B-Spline ##
 - To be determined
