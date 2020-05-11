@@ -52,6 +52,3 @@ plt.xlabel('Snow')
 plt.ylabel('Yield')
 plt.title('Plot of Snow vs Yield using Machine Learning')
 plt.show()
-
-# Save the model checkpoint
-# torch.save(model.state_dict(), 'model.ckpt')
