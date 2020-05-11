@@ -31,7 +31,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 </tr>
 <tr>
 <td> <img src='./assets/rsquare.png'> </td>
-<td> Coming Soon </td>
+<td> <img src='./assets/rsquare.png'> </td>
 </tr> </table>
 <br/>
 
