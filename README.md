@@ -9,7 +9,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [X] Display data as a 3D surface plot
 - [ ] Migrate data to TensorFlow or Torch models
 
-<br/>
 <table> <tr>
 <th> Two-Dimensional Plot </th> <th> Three-Dimensional Plot </th>
 </tr>
@@ -25,7 +24,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [ ] Using multi-parameter variables
 - [ ] Using TensorFlow and PyTorch
 
-<br/>
 <table> <tr>
 <th> Statistical Analysis </th> <th> Machine Learning </th>
 </tr>
