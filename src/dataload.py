@@ -2,7 +2,6 @@ import numpy as np
 import math, csv, sys, os
 
 import matplotlib.pyplot as plt
-# import seaborn as sns
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
@@ -55,8 +54,7 @@ def ScatterPlot(x_array, y_array, title='Scatter Plot',
 
 def SurfacePlot(x_array, y_array, function_model,
                 title='Surface Plot',
-                x='Independent Variable 1', y='Independent Variable 2',
-                z='Dependent Variable', 
+                x='X Axis', y='Y Axis', z='Z Axis', 
                 save=False):
     # TODO: Check Please
     x_array, y_array = np.meshgrid(x_array, y_array)
@@ -65,9 +63,9 @@ def SurfacePlot(x_array, y_array, function_model,
     ax = fig.gca(projection='3d')
     surf = ax.plot_surface(x_array, y_array, z_array, cmap=cm.coolwarm,
         linewidth=0, antialiased=False)
-    plt.xlabel('X Axis')
-    plt.ylabel('Y Axis')
-    plt.title('Himmelblau Function on 3-D Surface')
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.title(title)
     if save == False:
         plt.show()
     elif save == True:
@@ -92,6 +90,8 @@ def loadTXT(file, x_col=0, y_col=1):
     for i in range( len(x) ):
         onlyNumber( x[i] ); onlyNumber( y[i] )
     
+    x = np.reshape(x, (len(x), 1))
+    y = np.reshape(y, (len(y), 1))
     return x, y
 
 def loadCSV(file, x_col=0, y_col=1):
@@ -116,6 +116,8 @@ def loadCSV(file, x_col=0, y_col=1):
     for i in range ( len(x) ):
         onlyNumber( x[i] ); onlyNumber( y[i] )
 
+    x = np.reshape(x, (len(x), 1))
+    y = np.reshape(y, (len(y), 1))
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
@@ -134,6 +136,8 @@ def loadDAT(file, x_col=0, y_col=1):
         x[i] = float( X[i] ); y[i] = float( Y[i] )
         onlyNumber(x[i]); onlyNumber(y[i])
     
+    x = np.reshape(x, (len(x), 1))
+    y = np.reshape(y, (len(y), 1))
     return x, y
 
 class LoadDIM(ABC):
@@ -155,11 +159,15 @@ class loadTXT_DIM(LoadDIM):
     
     def extractDIM(self, col0=0, col1=1, col2=2):
         results = np.loadtxt( self.filein, comments='#', delimiter='\t')
-        x = np.array( results[:,col0] )
-        y = np.array( results[:,col1] )
-        z = np.array( results[:,col2] )
+        x = results[:,col0]
+        y = results[:,col1]
+        z = results[:,col2]
         for i in range (len(x)):
             onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
+        
+        x = np.reshape( x, (len(x), 1) )
+        y = np.reshape( y, (len(y), 1) )
+        z = np.reshape( z, (len(z), 1) )
         return x, y, z
 
 class loadCSV_DIM(LoadDIM):
@@ -180,9 +188,17 @@ class loadCSV_DIM(LoadDIM):
                 y[i] = result[i][col1]
                 z[i] = result[i][col2]
 
-        x = x[1:]; y = y[1:]; z = z[1:] 
+        x = x[1:]
+        y = y[1:]
+        z = z[1:]
         for i in range (len(x)):
             onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
+
+        """
+        x = np.reshape(x, (len(x), 1))
+        y = np.reshape(y, (len(y), 1))
+        z = np.reshape(z, (len(z), 1))
+        """
         return x, y, z
 
 def function_model(x_array, y_array):
@@ -221,6 +237,7 @@ if __name__ == '__main__':
     
     multidim_data = loadTXT_DIM(wblake)
     x_load, y_load, z_load = multidim_data.extractDIM()
+    print(x_load.shape, y_load.shape)
     
     # perceptron = '../data/triplet/perceptron.csv'
     # multidim_data = loadCSV_DIM(perceptron)
@@ -229,13 +246,17 @@ if __name__ == '__main__':
     # ScatterPlot(y_load, z_load)
     # ScatterPlot(x_load, y_load)
 
+    """
+    # Create a 2D Contour Plot
     x_array = np.arange(-6, 6, 0.1)
     y_array = np.arange(-6, 6, 0.1)
     z_array = np.zeros( len(x_array) )
-    SurfacePlot(x_array, y_array, Himmelblau_Function)
-    
-    (X,Y,Z) = CreateMeshData(-6, 6, 0.1, Himmelblau_Function)
+    SurfacePlot(x_array, y_array, Himmelblau_Function, 'Himmelblau Function 3D')
     """
+
+    """
+    # Create a 3D Surface Plot
+    (X,Y,Z) = CreateMeshData(-6, 6, 0.1, Himmelblau_Function)
     nContour = 50
     plt.contour(X, Y, Z, nContour)
     plt.title('Himmerblau Function on 2-D Surface')
