@@ -12,7 +12,7 @@ from random import randrange
    0 beningn
    1 malignant
 """
-dataset = pd.read_csv('breastcancer.csv', sep='\t')
+dataset = pd.read_csv('../data/triplet/breastcancer.csv', sep='\t')
 dataset.replace('?', np.nan, inplace=True)
 dataset.drop(['ID'], 1, inplace=True)
 dataset.dropna(inplace=True)
@@ -135,6 +135,6 @@ if __name__ == '__main__':
     reshaped_y = y.reshape(y.shape[0], -1)
     processed_dataset = np.concatenate((X, reshaped_y), axis=1)
     results = evaluate_algorithm(processed_dataset.tolist(), n_folds=10, 
-            alpha=0.01, max_iterations=500, plot_graph=False)
+            alpha=0.01, max_iterations=500, plot_graph=True)
     print("Mean : ",np.mean(results))
 
