@@ -3,6 +3,8 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 
+import dataload
+
 # Hyper-parameters
 input_size = 1
 output_size = 1
@@ -10,13 +12,10 @@ num_epochs = 100
 learning_rate = 0.001
 
 # Toy dataset
-x_train = np.array([[23.1], [32.8], [31.8], [32.0], [30.4], [24.0], [39.5], 
-                    [24.2], [52.5], [37.9], [30.5], [25.1], [12.4], [35.1], 
-                    [31.5], [21.1], [27.6]], dtype=np.float32)
-
-y_train = np.array([[10.5], [16.7], [18.2], [17.0], [16.3], [10.5], [23.1], 
-                    [12.4], [24.9], [22.8], [14.1], [12.9], [8.8], [17.4],
-                    [14.9], [10.5], [16.1]], dtype=np.float32)
+snowflakes = '../data/snow/snow.csv'
+x_train, y_train = dataload.loadCSV(snowflakes)
+x_train = x_train.astype('float32')
+y_train = y_train.astype('float32')
 
 # Linear regression model
 model = nn.Linear(input_size, output_size)
