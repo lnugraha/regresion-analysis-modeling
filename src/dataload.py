@@ -1,12 +1,11 @@
 import numpy as np
-import math, csv, sys, os
+import math, csv, sys, os, glob
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
 from abc import ABC, abstractmethod
-from collections import Counter
 
 def onlyNumber(dataIN):
     """
@@ -28,18 +27,18 @@ def ColoredScatterPlot(x_array, y_array, z_array,
                        title='Colored Scatter Plot',
                        x='Independent Variable', y='Dependent Variable',
                        save=False):
-    pass
-    # Coming Soon
-    # TODO: Check the length of z_array then decide how many colors will be 
-    # provided
-    # z_array provide an extra dimensionality through color; hence the value 
-    # MUST be discrete
+    color_scheme = ['red', 'blue', 'green', 'cyan', 'magenta', 'orange', 
+        'purple', 'pink', 'gray', 'black']
     
-    unique = Counter( z_array ).keys()
-    if (unique != 2):
-        print("Only binary classification is supported at the moment")
-        sys.exit
-    # Classify based on unique keys 
+    unique = np.unique(z_array)
+    size = x_array.shape[0]
+
+    for i in range(size):
+        for j in range( len(unique) ):
+            if (z_load[i] == unique[j]):
+                plt.scatter(x_load[i], y_load[i], c=color_scheme[j])
+    plt.title(title); plt.xlabel(x); plt.ylabel(y)
+    plt.show()
 
 def ScatterPlot(x_array, y_array, title='Scatter Plot',
                 x='Independent Variable', 
@@ -159,15 +158,13 @@ class loadTXT_DIM(LoadDIM):
     
     def extractDIM(self, col0=0, col1=1, col2=2):
         results = np.loadtxt( self.filein, comments='#', delimiter='\t')
-        x = results[:,col0]
-        y = results[:,col1]
-        z = results[:,col2]
+        x = results[:,col0]; y = results[:,col1]; z = results[:,col2]
         for i in range (len(x)):
             onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
         
-        x = np.reshape( x, (len(x), 1) )
-        y = np.reshape( y, (len(y), 1) )
-        z = np.reshape( z, (len(z), 1) )
+        x = np.reshape(x, (len(x), 1))
+        y = np.reshape(y, (len(y), 1))
+        z = np.reshape(z, (len(z), 1))
         return x, y, z
 
 class loadCSV_DIM(LoadDIM):
@@ -188,17 +185,13 @@ class loadCSV_DIM(LoadDIM):
                 y[i] = result[i][col1]
                 z[i] = result[i][col2]
 
-        x = x[1:]
-        y = y[1:]
-        z = z[1:]
+        x = x[1:]; y = y[1:]; z = z[1:]
         for i in range (len(x)):
             onlyNumber(x[i]); onlyNumber(y[i]); onlyNumber(z[i])
 
-        """
         x = np.reshape(x, (len(x), 1))
         y = np.reshape(y, (len(y), 1))
         z = np.reshape(z, (len(z), 1))
-        """
         return x, y, z
 
 def function_model(x_array, y_array):
@@ -211,12 +204,11 @@ def Himmelblau_Function(x_array, y_array):
     z_array = (x_array**2 + y_array - 11)**2 + (x_array + y_array**2 - 7)**2
     return z_array
 
-def CreateMeshData(minXY, maxXY, delta, function_model):
+def CreateMeshData(minXY, maxXY, delta, function_model=Himmelblau_Function):
     x = np.arange(minXY, maxXY, delta)
     y = np.arange(minXY, maxXY, delta)
     X, Y = np.meshgrid(x, y)
     Z = [function_model(x,y) for (x,y) in zip(X,Y)]
-    
     return (X, Y, Z)
 
 if __name__ == '__main__':
@@ -226,20 +218,30 @@ if __name__ == '__main__':
 
     duration_csv = '../data/duration/duration.csv'
     wblake = '../data/triplet/wblake.txt'
-    triplets = '../data/triplet/svmsample.csv'
-
+    triplets = '../data/triplet/svm_test.csv'
+    multiclass = '../data/triplet/wblake.txt'
+    perceptron = '../data/triplet/perceptron.csv'
     # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
     
-    # multidim_data = loadCSV_DIM(triplets)
-    # x_load, y_load, z_load = multidim_data.extractDIM()
-    
-    multidim_data = loadTXT_DIM(wblake)
+    multidim_data = loadCSV_DIM(triplets)
+    # multidim_data = loadCSV_DIM(perceptron)
     x_load, y_load, z_load = multidim_data.extractDIM()
-    print(x_load.shape, y_load.shape)
-    
-    # perceptron = '../data/triplet/perceptron.csv'
+    ColoredScatterPlot(x_load, y_load, z_load)
+
+    """
+    unique = np.unique(z_load)
+    print(unique[0], unique[1])
+    # print(unique)
+    color_scheme = ['red', 'blue', 'green', 'orange', 'cyan', 'magenta', 'gray']
+    for i in range(size):
+        for j in range( len(unique) ):
+            if (z_load[i] == unique[j]):
+                plt.scatter(x_load[i], y_load[i], c=color_scheme[j])
+    plt.show()
+    """
+
     # multidim_data = loadCSV_DIM(perceptron)
     # x_load, y_load, z_load = multidim_data.extractDIM()
 

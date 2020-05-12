@@ -5,7 +5,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 ## Data Load and Display ##
 - [X] Load Data in 2D or 3D forms
 - [X] Display data as a 2D plot
-- [ ] Display data as a 2D plot with colors
+- [X] Display data as a 2D plot with colors
 - [X] Display data as a 3D surface plot
 - [ ] Migrate data to TensorFlow or Torch models
 
