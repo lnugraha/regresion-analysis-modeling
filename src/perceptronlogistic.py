@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import dataload
 
-def get_weights(x, y, verbose = 0):
+def get_weights(x, y, verbose=0):
     shape = x.shape
     x = np.insert(x, 0, 1, axis=1)
     w = np.ones((shape[1]+1,))
@@ -41,9 +42,10 @@ def get_weights(x, y, verbose = 0):
     return w, weights
 
 if __name__ == '__main__':
-    df = np.loadtxt("perceptron.csv", delimiter = ',')
-    x  = df[:,0:-1]
-    y  = df[:,-1]
+    # df = np.loadtxt("perceptron.csv", delimiter = ',')
+    x, y, z = dataload.loadCSV('../data/triplet/svm_test.csv')
+    # x  = df[:,0:-1]
+    # y  = df[:,-1]
 
     print('Dataset')
     print(df, '\n')
