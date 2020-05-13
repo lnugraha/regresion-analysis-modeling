@@ -55,6 +55,12 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> <img src='./assets/perceptrons/Iteration Number 2190.png'> </td>
 </tr> </table>
 
+<br />
+<b> Support Vector Machine Hyper Plane Determination </b>
+<br />
+<center>
+<img src = './assets/svm_hyperplane.gif'>
+</center>
 
 ## Step-Wise Regression ##
 - To be determined
