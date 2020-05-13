@@ -13,9 +13,8 @@ Covers topics in regression analysis, such as linear regression, logistic regres
   - [ ] Migrate data to TensorFlow or Torch models
 
 ## Himmelblau's function: ##
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" title="\large f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2" /></a>
-
+<center>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" title="\large f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2" /></a></center>
 <table> <tr>
 <th> Two-Dimensional Plot </th> <th> Three-Dimensional Plot </th>
 </tr>
