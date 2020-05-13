@@ -58,9 +58,9 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <br />
 <b> Support Vector Machine Hyper Plane Determination </b>
 <br />
-<center>
+<p align='center'>
 <img src = './assets/svm_hyperplane.gif'>
-</center>
+</p>
 
 ## Step-Wise Regression ##
 - To be determined
