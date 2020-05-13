@@ -2,12 +2,19 @@
 
 Covers topics in regression analysis, such as linear regression, logistic regression, B-spline, and support vector machine. In general, each regression method will cover two optimization methods: one through machine learning optimzaition method, and one through statistical method
 
-## Data Load and Display ##
-- [X] Load Data in 2D or 3D forms
-- [X] Display data as a 2D plot
-- [X] Display data as a 2D plot with colors
-- [X] Display data as a 3D surface plot
-- [ ] Migrate data to TensorFlow or Torch models
+## Data Load, Display, and Migrate ##
+- Data load features:
+  - [X] Load Data in 2D or 3D forms
+- Data display features:
+  - [X] Display data as a 2D plot
+  - [X] Display data as a 2D plot with colors
+  - [X] Display data as a 3D surface plot
+- Data migrate features:
+  - [ ] Migrate data to TensorFlow or Torch models
+
+## Himmelblau's function: ##
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" title="\large f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2" /></a>
 
 <table> <tr>
 <th> Two-Dimensional Plot </th> <th> Three-Dimensional Plot </th>
