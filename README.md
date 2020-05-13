@@ -45,8 +45,16 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 
 ## Support Vector Machine ##
 - [ ] Binary classification purpose
-- [ ] Determine the hyper-plane
-- [ ] Using Scikit-Learn hyper-parameter search
+- [X] Determine the hyper-plane
+<table> <tr>
+<th> Initial Iteration </th>
+<th> Final Iteration </th>
+</tr>
+<tr>
+<td> <img src='./assets/perceptrons/Iteration Number 0.png'> </td>
+<td> <img src='./assets/perceptrons/Iteration Number 2190.png'> </td>
+</tr> </table>
+
 
 ## Step-Wise Regression ##
 - To be determined
