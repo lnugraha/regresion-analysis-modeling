@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import math, csv, json, sys, os, glob
 
 import matplotlib.pyplot as plt
@@ -117,6 +118,16 @@ def loadCSV(file, x_col=0, y_col=1):
 
     x = np.reshape(x, (len(x), 1))
     y = np.reshape(y, (len(y), 1))
+    return x, y
+
+def loadPANDAS(file, x_col=0, y_col=1):
+    dataset = pd.read_csv(file)
+    # dataset = dataset.apply(pd.to_numeric, errors='ignore')
+    x = (dataset.iloc[:,:-1].values).astype('float32')
+    y = (dataset.iloc[:,:-1].values).astype('float32')
+    for i in range ( x.shape[0] ):
+        onlyNumber( x[i][0] ); onlyNumber( y[i][0] )
+
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
@@ -240,7 +251,6 @@ if __name__ == '__main__':
     """
     with open(name_json, 'r') as fp:
         test = json.load(fp)
-        i = test.items()
     # print(test)
 
     """
