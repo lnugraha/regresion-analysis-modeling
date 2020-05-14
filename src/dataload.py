@@ -1,5 +1,5 @@
 import numpy as np
-import math, csv, sys, os, glob
+import math, csv, json, sys, os, glob
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -139,6 +139,12 @@ def loadDAT(file, x_col=0, y_col=1):
     y = np.reshape(y, (len(y), 1))
     return x, y
 
+def loadJSON(file, x_col=0, y_col=1):
+
+    x = np.reshape(x, (len(x), 1))
+    y = np.reshape(y, (len(y), 1))
+    return x, y
+
 class LoadDIM(ABC):
     """
     Load a data file and return THREE different arrays simultaneously
@@ -215,6 +221,7 @@ if __name__ == '__main__':
     name_txt = '../data/snow/snow.txt'
     name_csv = '../data/snow/snow.csv'
     name_dat = '../data/snow/snow.dat'
+    name_json = '../data/snow/snow.json'
 
     duration_csv = '../data/duration/duration.csv'
     wblake = '../data/triplet/wblake.txt'
@@ -225,10 +232,16 @@ if __name__ == '__main__':
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
     
+    """
     multidim_data = loadCSV_DIM(triplets)
     # multidim_data = loadCSV_DIM(perceptron)
     x_load, y_load, z_load = multidim_data.extractDIM()
     ColoredScatterPlot(x_load, y_load, z_load)
+    """
+    with open(name_json, 'r') as fp:
+        test = json.load(fp)
+        i = test.items()
+    # print(test)
 
     """
     unique = np.unique(z_load)
