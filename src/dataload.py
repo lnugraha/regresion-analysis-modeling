@@ -124,10 +124,11 @@ def loadPANDAS(file, x_col=0, y_col=1):
     dataset = pd.read_csv(file)
     # dataset = dataset.apply(pd.to_numeric, errors='ignore')
     x = (dataset.iloc[:,:-1].values).astype('float32')
+    # FIXME: both x and y arrays are identical
     y = (dataset.iloc[:,:-1].values).astype('float32')
+
     for i in range ( x.shape[0] ):
         onlyNumber( x[i][0] ); onlyNumber( y[i][0] )
-
     return x, y
 
 def loadDAT(file, x_col=0, y_col=1):
@@ -242,7 +243,9 @@ if __name__ == '__main__':
     # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
-    
+    x_load, y_load = loadPANDAS(name_csv)
+    print(x_load)
+
     """
     multidim_data = loadCSV_DIM(triplets)
     # multidim_data = loadCSV_DIM(perceptron)
