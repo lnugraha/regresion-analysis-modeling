@@ -6,19 +6,16 @@ import matplotlib.pyplot as plt
 import dataload
 
 # Hyper-parameters
-input_size = 1
-output_size = 1
-num_epochs = 100
-learning_rate = 0.001
+# input_size = 1; output_size = 1; 
+num_epochs = 100; learning_rate = 0.001
 
-# Toy dataset
 snowflakes = '../data/snow/snow.csv'
 x_train, y_train = dataload.loadCSV(snowflakes)
 x_train = x_train.astype('float32')
 y_train = y_train.astype('float32')
 
 # Linear regression model
-model = nn.Linear(input_size, output_size)
+model = nn.Linear(1, 1)
 
 # Loss and optimizer
 criterion = nn.MSELoss()
