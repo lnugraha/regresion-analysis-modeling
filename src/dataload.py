@@ -122,11 +122,10 @@ def loadCSV(file, x_col=0, y_col=1):
 
 def loadPANDAS(file, x_col=0, y_col=1):
     dataset = pd.read_csv(file)
-    # dataset = dataset.apply(pd.to_numeric, errors='ignore')
     x = (dataset.iloc[:,:-1].values).astype('float32')
-    # FIXME: both x and y arrays are identical
-    y = (dataset.iloc[:,:-1].values).astype('float32')
-
+    y = (dataset.iloc[:, -1].values).astype('float32')
+    y = np.reshape(y, (len(y),1))
+    
     for i in range ( x.shape[0] ):
         onlyNumber( x[i][0] ); onlyNumber( y[i][0] )
     return x, y
@@ -152,9 +151,11 @@ def loadDAT(file, x_col=0, y_col=1):
     return x, y
 
 def loadJSON(file, x_col=0, y_col=1):
-
-    x = np.reshape(x, (len(x), 1))
-    y = np.reshape(y, (len(y), 1))
+    dataset = pd.read_json(file)
+    x = (dataset.iloc[:,:-1].values).astype('float32')
+    y = (dataset.iloc[:, -1].values).astype('float32')
+    # x = np.reshape(x, (len(x), 1))
+    # y = np.reshape(y, (len(y), 1))
     return x, y
 
 class LoadDIM(ABC):
@@ -243,9 +244,8 @@ if __name__ == '__main__':
     # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
-    x_load, y_load = loadPANDAS(name_csv)
-    print(x_load)
-
+    # x_load, y_load = loadPANDAS(name_csv)
+    
     """
     multidim_data = loadCSV_DIM(triplets)
     # multidim_data = loadCSV_DIM(perceptron)
@@ -254,7 +254,9 @@ if __name__ == '__main__':
     """
     with open(name_json, 'r') as fp:
         test = json.load(fp)
-    # print(test)
+    print(test)   
+    # dataset = pd.read_json(name_json)
+    # print(dataset)
 
     """
     unique = np.unique(z_load)
