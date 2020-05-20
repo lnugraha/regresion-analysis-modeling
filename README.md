@@ -10,7 +10,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
   - [X] Display data as a 2D plot
   - [X] Display data as a 2D plot with colors
   - [X] Display data as a 3D surface plot
-- Data migrate features:
+- Data migration features:
   - [ ] Migrate data to TensorFlow or Torch models
 
 ## Himmelblau's function: ##
@@ -30,7 +30,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 ## Linear Regression ##
 - [X] Using statistics approach (R-square value)
 - [ ] Using machine learning approach (RMSE value)
-- [ ] Using multi-parameter variables
 - [X] Using TensorFlow and PyTorch
 
 <table> <tr>
