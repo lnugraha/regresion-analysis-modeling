@@ -20,7 +20,8 @@ if __name__ == '__main__':
     y_data = Variable( torch.Tensor(y_load.astype('float32')) )
 
     LinearModel = LinearRegression()
-    criterion = torch.nn.MSELoss(reduction='sum')
+    criterion = torch.nn.MSELoss()
+    # criterion = torch.nn.MSELoss(reduction='sum')
     optimizer = torch.optim.SGD(LinearModel.parameters(), lr=0.001)
     
     for epoch in range(1000):

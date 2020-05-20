@@ -1,7 +1,6 @@
 import dataload
 import matplotlib.pyplot as plt
 import numpy as np
-from statistics import mean
 from random import seed, randrange
 import os, sys, glob
 
@@ -40,15 +39,13 @@ class LINEAR_RSQUARE(object):
         return sum_sqr_err
 
     def rsquared(self):
-        ys_original = list(self.ys)
+        ys_original  = list(self.ys)
         m_est, b_est = self.slope_intercept()
 
         ys_estimation = [m_est * x + b_est for x in self.xs]   
-        y_mean_line = [mean(ys_original) for _ in ys_original] 
-        
-        SS_tot = self.squared_error(ys_original, y_mean_line)
+        ys_mean_line  = [np.mean(self.ys) for y in ys_original] 
+        SS_tot = self.squared_error(ys_original, ys_mean_line)
         SS_res = self.squared_error(ys_original, ys_estimation)
-        # SS_reg = self.squared_error(ys_estimation, y_mean_line)
         return (1.0 - (SS_res/SS_tot))
     
 class LINEAR_RMSE(object):
@@ -108,12 +105,11 @@ if __name__ == '__main__':
     rsqr = linear_reg.rsquared()
 
     print("Slope and Intercept: {} and {}".format(m_snow, b_snow) )
-    print("{}".format(rsqr))
+    print("R-square: {}".format(rsqr))
+    
     plt.scatter(x_snow, y_snow, color='red')
     plt.plot(x_snow, regression_line, color='blue')
     plt.title('Plot of Snow vs Yield using Statistical Analysis')
     plt.xlabel('Snow')
     plt.ylabel('Yield')
     plt.show()
-
-

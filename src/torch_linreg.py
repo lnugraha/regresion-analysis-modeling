@@ -16,7 +16,7 @@ class LinearRegression(torch.nn.Module):
 test_model = LinearRegression()
 
 criterion = torch.nn.MSELoss(reduction='sum')
-optimizer = torch.optim.SGD( test_model.parameters(), lr = 0.01 )
+optimizer = torch.optim.SGD( test_model.parameters(), lr = 0.001 )
 
 for epoch in range(1000):
     pred_y = test_model(x_data)
