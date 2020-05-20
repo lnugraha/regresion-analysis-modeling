@@ -29,7 +29,7 @@ class TorchLinearRegression(object):
         return model         
 
     def evaluation_session(self, model):
-        validation = model(torch.from_numpy(self.x_train)).detach().numpy()
+        validation = model( torch.from_numpy(self.x_train) ).detach().numpy()
         m_pred = (validation[1]-validation[0]) / (self.x_train[1]-self.x_train[0])
         b_pred = validation[0] - m_pred*self.x_train[0]
         return m_pred, b_pred, validation
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     y_train = y_train.astype('float32')
 
     test_linear = TorchLinearRegression(x_train, y_train)
-    myModel = test_linear.training_session(100, 0.001)
+    myModel = test_linear.training_session(1000, 0.001)
     # check_results = test_linear.testing_session(myModel, 16)
     # print(check_results)
 
