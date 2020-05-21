@@ -241,22 +241,17 @@ if __name__ == '__main__':
     triplets = '../data/triplet/svm_test.csv'
     multiclass = '../data/triplet/wblake.txt'
     perceptron = '../data/triplet/perceptron.csv'
+    cvx_data = '../data/triplet/xy_test.csv'
+
     # x_load, y_load = loadTXT(name_txt)
     # x_load, y_load = loadCSV(duration_csv)
     # x_load, y_load = loadDAT(name_dat)
     # x_load, y_load = loadPANDAS(name_csv)
     
-    """
-    multidim_data = loadCSV_DIM(triplets)
+    multidim_data = loadCSV_DIM(cvx_data)
     # multidim_data = loadCSV_DIM(perceptron)
     x_load, y_load, z_load = multidim_data.extractDIM()
     ColoredScatterPlot(x_load, y_load, z_load)
-    """
-    with open(name_json, 'r') as fp:
-        test = json.load(fp)
-    print(test)   
-    # dataset = pd.read_json(name_json)
-    # print(dataset)
 
     """
     unique = np.unique(z_load)
