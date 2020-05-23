@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from random import seed, randrange
 import os, sys, glob
+from abc import abstractmethod, ABC
 
 class LINEAR_REGRESSION(object):
     def __init__(self, xs, ys):
@@ -20,6 +21,7 @@ class LINEAR_REGRESSION(object):
         pass
 
 class LINEAR_RSQUARE(object):
+    # TODO: Use super method
     def __init__(self, xs, ys):
         self.xs = xs 
         self.ys = ys
