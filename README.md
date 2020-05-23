@@ -11,7 +11,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
   - [X] Display data as a 2D plot with colors
   - [X] Display data as a 3D surface plot
 
-## Himmelblau's function: ##
+## Himmelblau's Function: ##
 <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" title="\large f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2" /></a>
 <br />
 <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\frac{df(x,y)}{dx}&space;=&space;4x^3&space;&plus;&space;4x(y-11)&space;&plus;&space;2x&plus;2(y^2-7)&space;\\&space;\frac{df(x,y)}{dy}&space;=&space;2x^2&space;&plus;&space;4y^3&space;&plus;4xy&space;-26y&space;-&space;22" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\frac{df(x,y)}{dx}&space;=&space;4x^3&space;&plus;&space;4x(y-11)&space;&plus;&space;2x&plus;2(y^2-7)&space;\\&space;\frac{df(x,y)}{dy}&space;=&space;2x^2&space;&plus;&space;4y^3&space;&plus;4xy&space;-26y&space;-&space;22" title="\large \frac{df(x,y)}{dx} = 4x^3 + 4x(y-11) + 2x+2(y^2-7) \\ \frac{df(x,y)}{dy} = 2x^2 + 4y^3 +4xy -26y - 22" /></a>
