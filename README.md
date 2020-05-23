@@ -10,8 +10,6 @@ Covers topics in regression analysis, such as linear regression, logistic regres
   - [X] Display data as a 2D plot
   - [X] Display data as a 2D plot with colors
   - [X] Display data as a 3D surface plot
-- Data migration features:
-  - [ ] Migrate data to TensorFlow or Torch models
 
 ## Himmelblau's function: ##
 <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f(x,y)&space;=&space;(x^2&space;&plus;&space;y&space;-&space;11)^2&space;&plus;&space;(x&space;&plus;&space;y^2&space;-&space;7)^2" title="\large f(x,y) = (x^2 + y - 11)^2 + (x + y^2 - 7)^2" /></a>
@@ -29,7 +27,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 
 ## Linear Regression ##
 - [X] Using statistics approach (R-square value)
-- [ ] Using machine learning approach (RMSE value)
+- [X] Using machine learning approach (RMSE value)
 - [X] Using TensorFlow and PyTorch
 
 <table> <tr>
@@ -37,7 +35,10 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 </tr>
 <tr>
 <td> <img src='./assets/rsquare.png'> </td>
-<td> <img src='./assets/linear_regression_torch.png'> </td>
+<td> <img src='./assets/rmse.png'> </td>
+<tr>
+<td> m = 0.498; b = 0.725 </td>
+<td> m = 0.559; b = 0.022 </td>
 </tr> </table>
 
 ## Logistic Regression ##
