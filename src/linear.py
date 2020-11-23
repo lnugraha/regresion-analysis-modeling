@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
     print("Slope and Intercept: {} and {}".format(m_snow, b_snow) )
     print("R-square: {}".format(rsqr))
-    """
+    """ Use bool flag to display graph
     plt.scatter(x_snow, y_snow, color='red')
     plt.plot(x_snow, regression_line, color='blue')
     plt.title('Plot of Snow vs Yield using Statistical Analysis')
@@ -128,7 +128,8 @@ if __name__ == '__main__':
     rmse = linear_reg_02.RMSE(y_snow, regressionline_02)
     print("Slope and Intercept: {} and {}".format(m, b) )
     print("RMSE: {}".format(rmse))
-    """
+    
+    """ Use bool flag to display graph
     plt.scatter(x_snow, y_snow, color='red')
     plt.plot(x_snow, regressionline_02, color='blue')
     plt.title('Plot of Snow vs Yield using Machine Learning Analysis')
