@@ -42,7 +42,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 </tr> </table>
 
 ## Logistic Regression ##
-- [ ] (Binary or beyond) supervised clasification purpose
+- [ ] Simple binary supervised clasification purpose
 - [ ] Using TensorFlow and PyTorch model
 
 ## Support Vector Machine ##
