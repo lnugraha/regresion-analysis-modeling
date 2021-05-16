@@ -1,0 +1,7 @@
+mpl_toolkits
+numpy
+scikit-image
+scikit-learn
+seaborn
+torch
+tensorflow
