@@ -30,7 +30,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 - [X] Using machine learning approach (RMSE value)
 - [X] Using TensorFlow and PyTorch
 
-### Example 1: Analysis of snow and yield during winter at MN ###
+### Example 1: Analysis of water content of snow and water yield in the Snake River watershed (WY) ###
 <table> <tr>
 <th> Statistical Analysis </th> <th> Machine Learning </th>
 </tr>
@@ -42,7 +42,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> m = 0.559; b = 0.022 </td>
 </tr> </table>
 
-### Example 2: Code in Place Spring 2021 - COVID-19 PredictionAnalysis ###
+### Example 2: Code in Place Spring 2021 - COVID-19 Prediction Analysis ###
 <table> <tr>
 <th> Statistical Analysis </th> <th> Machine Learning </th>
 </tr>
@@ -56,7 +56,7 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 
 
 ## Support Vector Machine ##
-### Example 1: Classification using data from CMU Statistical Machine Learning course ###
+### Example 1: Classification using perceptron data using statistical machine learning ###
 - [ ] Binary classification purpose
 - [X] Determine the hyper-plane
 <table> <tr>
