@@ -41,9 +41,17 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> m = 0.559; b = 0.022 </td>
 </tr> </table>
 
-## Logistic Regression ##
-- [ ] Simple binary supervised clasification purpose
-- [ ] Using TensorFlow and PyTorch model
+## Stanford Code in Place Spring 2021 - COVID19 Analysis##
+<th> Statistical Analysis </th> <th> Machine Learning </th>
+</tr>
+<tr>
+<td> <img src='./assets/covid_statistics.png'> </td>
+<td> <img src='./assets/covid_machine_learning.png'> </td>
+<tr>
+<td> m = 89.8580; b = 66040.458 </td>
+<td> m = 112.245; b = 47667.073 </td>
+</tr> </table>
+
 
 ## Support Vector Machine ##
 - [ ] Binary classification purpose
@@ -64,11 +72,3 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <img src = './assets/svm_hyperplane.gif' width ='500'>
 </p>
 
-## Step-Wise Regression ##
-- To be determined
-
-## B-Spline ##
-- To be determined
-
-## Parametric Regression ##
-- To be determined
