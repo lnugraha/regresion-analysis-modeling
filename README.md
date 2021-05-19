@@ -41,12 +41,12 @@ Covers topics in regression analysis, such as linear regression, logistic regres
 <td> m = 0.559; b = 0.022 </td>
 </tr> </table>
 
-## Stanford Code in Place Spring 2021 - COVID19 Analysis##
+## Stanford Code in Place Spring 2021 - COVID19 Analysis ##
 <th> Statistical Analysis </th> <th> Machine Learning </th>
 </tr>
 <tr>
-<td> <img src='./assets/covid_statistics.png'> </td>
-<td> <img src='./assets/covid_machine_learning.png'> </td>
+<td> <img src='./assets/covid_statistics.png' width=40% height=40%> </td>
+<td> <img src='./assets/covid_machine_learning.png' width=40% height=40%> </td>
 <tr>
 <td> m = 89.8580; b = 66040.458 </td>
 <td> m = 112.245; b = 47667.073 </td>
